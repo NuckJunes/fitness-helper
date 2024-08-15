@@ -30,7 +30,9 @@ public class Recipe {
 	@Column 
 	private String[] instructions;
 	
-	@OneToMany(mappedBy = "")
+	private boolean deleted = false;
+	
+	@OneToMany(mappedBy = "recipe")
 	private List<Ingredient> ingredients;
 	
 	@ManyToOne

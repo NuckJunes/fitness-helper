@@ -25,9 +25,11 @@ public class All_Food {
 	@Column
 	private String description;
 	
+	private boolean deleted = false;
+	
 	@OneToMany(mappedBy = "food_item")
 	private List<Pantry> pantry_items;
 	
-	@OneToMany(mappedBy = "")
+	@OneToMany(mappedBy = "food_item")
 	private List<Ingredient> ingredients;
 }

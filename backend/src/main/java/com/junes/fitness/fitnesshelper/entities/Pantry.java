@@ -28,4 +28,6 @@ public class Pantry {
 	@ManyToOne
 	@JoinColumn(name = "profile_id")
 	private Profile user;
+	
+	private boolean deleted = false;
 }
