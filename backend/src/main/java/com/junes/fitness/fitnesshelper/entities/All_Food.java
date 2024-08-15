@@ -13,26 +13,21 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @Data
-public class Profile {
+public class All_Food {
 
 	@Id
 	@GeneratedValue
 	private long id;
 	
-	@Column(unique = true, nullable = false)
-	private String username;
+	@Column
+	private String name;
 	
-	@Column(nullable = false)
-	private String password;
+	@Column
+	private String description;
 	
-	@Column(unique = true, nullable = false)
-	private String email;
-	
-	private boolean deleted = false;
-	
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "food_item")
 	private List<Pantry> pantry_items;
 	
-	@OneToMany(mappedBy = "profile")
-	private List<Recipe> Recipes;
+	@OneToMany(mappedBy = "")
+	private List<Ingredient> ingredients;
 }

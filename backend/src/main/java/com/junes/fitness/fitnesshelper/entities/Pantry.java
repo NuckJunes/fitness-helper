@@ -2,6 +2,8 @@ package com.junes.fitness.fitnesshelper.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -18,4 +20,12 @@ public class Pantry {
 	
 	@Column
 	private String measurement;
+	
+	@ManyToOne
+	@JoinColumn(name = "food_id")
+	private All_Food food_item;
+	
+	@ManyToOne
+	@JoinColumn(name = "profile_id")
+	private Profile user;
 }
