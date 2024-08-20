@@ -34,5 +34,8 @@ public class Profile {
 	private List<Pantry> pantry_items;
 	
 	@OneToMany(mappedBy = "profile")
-	private List<Recipe> Recipes;
+	private List<Recipe> recipes;
+	
+	@OneToMany(mappedBy = "profile")
+	private List<Workout> workouts;
 }
