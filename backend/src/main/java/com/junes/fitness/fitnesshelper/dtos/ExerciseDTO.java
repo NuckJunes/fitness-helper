@@ -1,7 +1,5 @@
 package com.junes.fitness.fitnesshelper.dtos;
 
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,17 +7,15 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class WorkoutResponseDTO {
+public class ExerciseDTO {
 
-	private long id;
+	private double weight;
 	
-	private String name;
+	private int time_seconds;
 	
-	private String muscle_group;
-	
-	private int time_minutes;
+	private int reps;
 	
 	private String imageURL;
 	
-	private List<ExerciseDTO> exercises;
+	private All_Exercise_DTO All_Exercise;
 }
