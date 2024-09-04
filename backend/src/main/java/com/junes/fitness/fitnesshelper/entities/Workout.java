@@ -27,6 +27,9 @@ public class Workout {
 	@Column
 	private String muscle;
 	
+	@Column
+	private int time_minutes;
+	
 	@ManyToMany
 	@JoinTable(
 			name = "Workout_Exercises",

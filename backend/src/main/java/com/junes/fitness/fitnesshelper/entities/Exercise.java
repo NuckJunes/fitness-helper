@@ -22,7 +22,8 @@ public class Exercise {
 	@Column
 	private double weight;
 	
-	//time
+	@Column
+	private int time_seconds;
 	
 	@Column
 	private int reps;
