@@ -37,4 +37,7 @@ public class Exercise {
 	@JoinColumn(name = "Exercise_ID")
 	private All_Exercise exercise;
 	
+	private boolean deleted = false;
+
+	
 }

@@ -36,4 +36,7 @@ public class Workout {
 			joinColumns = @JoinColumn(name = "workout_id"),
 			inverseJoinColumns = @JoinColumn(name = "exercises_id"))
 	private List<Exercise> exercises;
+	
+	private boolean deleted = false;
+
 }

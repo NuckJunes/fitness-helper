@@ -30,4 +30,6 @@ public class All_Exercise {
 	
 	@OneToMany(mappedBy = "exercise")
 	private List<Exercise> exercises;
+	
+	private boolean deleted = false;
 }
