@@ -2,6 +2,8 @@ package com.junes.fitness.fitnesshelper.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
@@ -11,6 +13,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class Pantry {
+	
+	@Id
+	@GeneratedValue
+	private long id;
 
 	@Column
 	private String name;

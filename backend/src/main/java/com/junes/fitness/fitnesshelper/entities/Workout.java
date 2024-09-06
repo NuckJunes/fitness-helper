@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -36,6 +37,10 @@ public class Workout {
 			joinColumns = @JoinColumn(name = "workout_id"),
 			inverseJoinColumns = @JoinColumn(name = "exercises_id"))
 	private List<Exercise> exercises;
+	
+	@ManyToOne
+	@JoinColumn(name = "profile_id")
+	private Profile profile;
 	
 	private boolean deleted = false;
 
