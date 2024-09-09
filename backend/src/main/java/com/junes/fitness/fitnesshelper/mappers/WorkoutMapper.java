@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.mapstruct.Mapper;
 
+import com.junes.fitness.fitnesshelper.dtos.WorkoutRequestDTO;
 import com.junes.fitness.fitnesshelper.dtos.WorkoutResponseDTO;
 import com.junes.fitness.fitnesshelper.entities.Workout;
 
@@ -11,5 +12,9 @@ import com.junes.fitness.fitnesshelper.entities.Workout;
 public interface WorkoutMapper {
 
 	List<WorkoutResponseDTO> entitiesToDTOs(List<Workout> workouts);
+
+	Workout DTOToEntity(WorkoutRequestDTO workoutRequestDTO);
+
+	WorkoutResponseDTO EntityToDTO(Workout workout);
 
 }

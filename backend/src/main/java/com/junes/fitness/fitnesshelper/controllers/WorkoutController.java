@@ -4,9 +4,12 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.junes.fitness.fitnesshelper.dtos.WorkoutRequestDTO;
 import com.junes.fitness.fitnesshelper.dtos.WorkoutResponseDTO;
 import com.junes.fitness.fitnesshelper.services.WorkoutService;
 
@@ -22,6 +25,11 @@ public class WorkoutController {
 	@GetMapping("/@{profileID}")
 	public List<WorkoutResponseDTO> getAllWorkouts(@PathVariable long profileID) {
 		return workoutService.getAllWorkouts(profileID);
+	}
+	
+	@PostMapping("/@{profileID}")
+	public WorkoutResponseDTO createWorkout(@PathVariable long profileID, @RequestBody WorkoutRequestDTO workoutRequestDTO) {
+		return workoutService.createWorkout(profileID, workoutRequestDTO);
 	}
 	
 }

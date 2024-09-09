@@ -6,9 +6,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.JoinColumn;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,11 +30,7 @@ public class Workout {
 	@Column
 	private int time_minutes;
 	
-	@ManyToMany
-	@JoinTable(
-			name = "Workout_Exercises",
-			joinColumns = @JoinColumn(name = "workout_id"),
-			inverseJoinColumns = @JoinColumn(name = "exercises_id"))
+	@OneToMany(mappedBy = "workout")
 	private List<Exercise> exercises;
 	
 	@ManyToOne

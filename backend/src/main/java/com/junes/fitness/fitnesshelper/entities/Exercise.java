@@ -1,13 +1,10 @@
 package com.junes.fitness.fitnesshelper.entities;
 
-import java.util.List;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,8 +27,9 @@ public class Exercise {
 	@Column
 	private int reps;
 	
-	@ManyToMany(mappedBy = "exercises")
-	private List<Workout> workouts;
+	@ManyToOne
+	@JoinColumn(name = "workout_ID")
+	private Workout workout;
 	
 	@ManyToOne
 	@JoinColumn(name = "Exercise_ID")
