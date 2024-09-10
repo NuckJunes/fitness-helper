@@ -13,4 +13,6 @@ public interface WorkoutService {
 
 	WorkoutResponseDTO updateWorkout(long workoutID, WorkoutRequestDTO workoutRequestDTO);
 
+	WorkoutResponseDTO deleteWorkout(long workoutID);
+
 }

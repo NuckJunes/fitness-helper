@@ -36,6 +36,9 @@ public class WorkoutServiceImpl implements WorkoutService{
 		Workout workoutToCreate = workoutMapper.DTOToEntity(workoutRequestDTO);
 		
 		Profile profileToModify = profileRepository.getById(profileID);
+		if(profileToModify.isDeleted()) {
+			//throw error here
+		}
 		List<Workout> tmp_workouts = profileToModify.getWorkouts();
 		tmp_workouts.add(workoutToCreate);
 		
@@ -55,6 +58,10 @@ public class WorkoutServiceImpl implements WorkoutService{
 		Workout newWorkout = workoutMapper.DTOToEntity(workoutRequestDTO);
 		Workout oldWorkout = workoutRepository.getById(workoutID);
 		
+		if(oldWorkout.isDeleted()) {
+			//throw error if deleted
+		}
+		
 		oldWorkout.setExercises(newWorkout.getExercises());
 		oldWorkout.setMuscle(newWorkout.getMuscle());
 		oldWorkout.setName(newWorkout.getName());
@@ -62,6 +69,14 @@ public class WorkoutServiceImpl implements WorkoutService{
 		
 		workoutRepository.saveAndFlush(oldWorkout);
 		return workoutMapper.EntityToDTO(oldWorkout);
+	}
+
+	@Override
+	public WorkoutResponseDTO deleteWorkout(long workoutID) {
+		Workout workoutToDelete = workoutRepository.getById(workoutID);
+		workoutToDelete.setDeleted(true);
+		workoutRepository.saveAndFlush(workoutToDelete);
+		return workoutMapper.EntityToDTO(workoutToDelete);
 	}
 
 }

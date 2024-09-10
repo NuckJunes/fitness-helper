@@ -2,6 +2,7 @@ package com.junes.fitness.fitnesshelper.controllers;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,6 +37,11 @@ public class WorkoutController {
 	@PatchMapping("/{workoutID}")
 	public WorkoutResponseDTO updateWorkout(@PathVariable long workoutID, @RequestBody WorkoutRequestDTO workoutRequestDTO) {
 		return workoutService.updateWorkout(workoutID, workoutRequestDTO);
+	}
+	
+	@DeleteMapping("/{workoutID}")
+	public WorkoutResponseDTO deleteWorkout(@PathVariable long workoutID) {
+		return workoutService.deleteWorkout(workoutID);
 	}
 	
 }
