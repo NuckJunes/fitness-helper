@@ -11,4 +11,6 @@ public interface WorkoutService {
 
 	WorkoutResponseDTO createWorkout(long profileID, WorkoutRequestDTO workoutRequestDTO);
 
+	WorkoutResponseDTO updateWorkout(long workoutID, WorkoutRequestDTO workoutRequestDTO);
+
 }

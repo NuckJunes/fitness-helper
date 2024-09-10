@@ -50,4 +50,18 @@ public class WorkoutServiceImpl implements WorkoutService{
 		return workoutMapper.EntityToDTO(workoutToCreate);
 	}
 
+	@Override
+	public WorkoutResponseDTO updateWorkout(long workoutID, WorkoutRequestDTO workoutRequestDTO) {
+		Workout newWorkout = workoutMapper.DTOToEntity(workoutRequestDTO);
+		Workout oldWorkout = workoutRepository.getById(workoutID);
+		
+		oldWorkout.setExercises(newWorkout.getExercises());
+		oldWorkout.setMuscle(newWorkout.getMuscle());
+		oldWorkout.setName(newWorkout.getName());
+		oldWorkout.setTime_minutes(newWorkout.getTime_minutes());
+		
+		workoutRepository.saveAndFlush(oldWorkout);
+		return workoutMapper.EntityToDTO(oldWorkout);
+	}
+
 }
