@@ -22,12 +22,12 @@ public class WorkoutController {
 
 	private final WorkoutService workoutService;
 	
-	@GetMapping("/@{profileID}")
+	@GetMapping("/{profileID}")
 	public List<WorkoutResponseDTO> getAllWorkouts(@PathVariable long profileID) {
 		return workoutService.getAllWorkouts(profileID);
 	}
 	
-	@PostMapping("/@{profileID}")
+	@PostMapping("/{profileID}")
 	public WorkoutResponseDTO createWorkout(@PathVariable long profileID, @RequestBody WorkoutRequestDTO workoutRequestDTO) {
 		return workoutService.createWorkout(profileID, workoutRequestDTO);
 	}

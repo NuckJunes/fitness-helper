@@ -1,9 +1,13 @@
 package com.junes.fitness.fitnesshelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.junes.fitness.fitnesshelper.entities.Profile;
+import com.junes.fitness.fitnesshelper.entities.Workout;
 import com.junes.fitness.fitnesshelper.repositories.All_FoodRepository;
 import com.junes.fitness.fitnesshelper.repositories.ExerciseRepository;
 import com.junes.fitness.fitnesshelper.repositories.IngredientRepository;
@@ -32,5 +36,19 @@ public class Seeder implements CommandLineRunner {
 		profile1.setUsername("NuckJunes");
 		profile1.setPassword("password");
 		profile1.setEmail("Email@Email.com");
+		profileRepository.saveAndFlush(profile1);
+		
+		Workout workout1 = new Workout();
+		workout1.setProfile(profile1);
+		workout1.setMuscle("Arms");
+		workout1.setName("Arm DAY!!!!");
+		workout1.setTime_minutes(30);
+		workoutRepository.saveAndFlush(workout1);
+		
+		List<Workout> workouts = new ArrayList<>();
+		workouts.add(workout1);
+		profile1.setWorkouts(workouts);
+		profileRepository.saveAndFlush(profile1);
+		
 	}
 }

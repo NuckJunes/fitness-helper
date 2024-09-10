@@ -2,6 +2,7 @@ package com.junes.fitness.fitnesshelper.entities;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,12 +31,12 @@ public class Profile {
 	
 	private boolean deleted = false;
 	
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private List<Pantry> pantry_items;
 	
-	@OneToMany(mappedBy = "profile")
+	@OneToMany(mappedBy = "profile", cascade = CascadeType.ALL)
 	private List<Recipe> recipes;
 	
-	@OneToMany(mappedBy = "profile")
+	@OneToMany(mappedBy = "profile", cascade = CascadeType.ALL)
 	private List<Workout> workouts;
 }
