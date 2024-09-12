@@ -16,8 +16,6 @@ public class ExerciseDTO {
 	private int reps;
 	
 	private String imageURL;
-	
-	private WorkoutResponseDTO workout;
-	
-	private All_Exercise_DTO All_Exercise;
+		
+	private All_Exercise_DTO exercise;
 }
