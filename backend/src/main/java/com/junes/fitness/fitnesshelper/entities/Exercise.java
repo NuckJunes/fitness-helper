@@ -16,7 +16,7 @@ public class Exercise {
 
 	@Id
 	@GeneratedValue
-	private long id;
+	private Long id;
 	
 	@Column
 	private double weight;

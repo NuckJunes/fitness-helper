@@ -20,7 +20,7 @@ public class Recipe {
 
 	@Id
 	@GeneratedValue
-	private long id;
+	private Long id;
 	
 	@Column
 	private String name;

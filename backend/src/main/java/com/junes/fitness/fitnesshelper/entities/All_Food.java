@@ -18,7 +18,7 @@ public class All_Food {
 
 	@Id
 	@GeneratedValue
-	private long id;
+	private Long id;
 	
 	@Column
 	private String name;

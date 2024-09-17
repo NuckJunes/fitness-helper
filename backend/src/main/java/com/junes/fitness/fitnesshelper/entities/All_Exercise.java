@@ -18,7 +18,7 @@ public class All_Exercise {
 
 	@Id
 	@GeneratedValue
-	private long id;
+	private Long id;
 	
 	@Column
 	private String name;
@@ -29,7 +29,7 @@ public class All_Exercise {
 	@Column
 	private String description;
 	
-	@OneToMany(mappedBy = "exercise", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "exercise")
 	private List<Exercise> exercises;
 	
 	private boolean deleted = false;

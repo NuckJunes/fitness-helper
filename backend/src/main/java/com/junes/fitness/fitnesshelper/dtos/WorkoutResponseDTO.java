@@ -15,7 +15,7 @@ public class WorkoutResponseDTO {
 	
 	private String name;
 	
-	private String muscle_group;
+	private String muscle;
 	
 	private int time_minutes;
 	

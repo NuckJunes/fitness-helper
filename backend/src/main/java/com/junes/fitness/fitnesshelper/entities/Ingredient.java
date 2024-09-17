@@ -16,7 +16,7 @@ public class Ingredient {
 
 	@Id
 	@GeneratedValue
-	private long id;
+	private Long id;
 	
 	@Column
 	private double amount;

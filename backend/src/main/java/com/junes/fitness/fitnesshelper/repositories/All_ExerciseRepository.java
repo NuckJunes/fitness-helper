@@ -8,4 +8,5 @@ import com.junes.fitness.fitnesshelper.entities.All_Exercise;
 @Repository
 public interface All_ExerciseRepository extends JpaRepository<All_Exercise, Long> {
 
+	All_Exercise findByName(String name);
 }

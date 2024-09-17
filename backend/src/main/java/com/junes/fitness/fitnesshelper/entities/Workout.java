@@ -20,7 +20,7 @@ public class Workout {
 
 	@Id
 	@GeneratedValue
-	private long id;
+	private Long id;
 	
 	@Column
 	private String name;
@@ -31,7 +31,7 @@ public class Workout {
 	@Column
 	private int time_minutes;
 	
-	@OneToMany(mappedBy = "workout", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "workout")
 	private List<Exercise> exercises;
 	
 	@ManyToOne

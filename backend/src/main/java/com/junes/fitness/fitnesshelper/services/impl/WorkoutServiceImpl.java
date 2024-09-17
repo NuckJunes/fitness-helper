@@ -6,10 +6,12 @@ import org.springframework.stereotype.Service;
 
 import com.junes.fitness.fitnesshelper.dtos.WorkoutRequestDTO;
 import com.junes.fitness.fitnesshelper.dtos.WorkoutResponseDTO;
+import com.junes.fitness.fitnesshelper.entities.All_Exercise;
 import com.junes.fitness.fitnesshelper.entities.Exercise;
 import com.junes.fitness.fitnesshelper.entities.Profile;
 import com.junes.fitness.fitnesshelper.entities.Workout;
 import com.junes.fitness.fitnesshelper.mappers.WorkoutMapper;
+import com.junes.fitness.fitnesshelper.repositories.All_ExerciseRepository;
 import com.junes.fitness.fitnesshelper.repositories.ExerciseRepository;
 import com.junes.fitness.fitnesshelper.repositories.ProfileRepository;
 import com.junes.fitness.fitnesshelper.repositories.WorkoutRepository;
@@ -25,6 +27,7 @@ public class WorkoutServiceImpl implements WorkoutService{
 	private final WorkoutRepository workoutRepository;
 	private final ProfileRepository profileRepository;
 	private final ExerciseRepository exerciseRepository;
+	private final All_ExerciseRepository all_exerciseRepository;
 	
 	@Override
 	public List<WorkoutResponseDTO> getAllWorkouts(long profileID) {
@@ -43,39 +46,48 @@ public class WorkoutServiceImpl implements WorkoutService{
 		tmp_workouts.add(workoutToCreate);
 		
 		workoutToCreate.setProfile(profileToModify);
-		profileRepository.saveAndFlush(profileToModify);
 		
-		for(Exercise e : workoutToCreate.getExercises()) {
+		for(Exercise e : workoutToCreate.getExercises()) {		
+			All_Exercise tmp = all_exerciseRepository.findByName(e.getExercise().getName());
+			List<Exercise> tmpExercises = tmp.getExercises();
+			tmpExercises.add(e);
+			tmp.setExercises(tmpExercises);
+			
 			e.setWorkout(workoutToCreate);
-			exerciseRepository.saveAndFlush(e);
+			e.setExercise(tmp);
+			e.setId(null);
 		}
 		workoutRepository.saveAndFlush(workoutToCreate);
+		exerciseRepository.saveAllAndFlush(workoutToCreate.getExercises());
+		profileRepository.saveAndFlush(profileToModify);
 		return workoutMapper.EntityToDTO(workoutToCreate);
 	}
 
 	@Override
 	public WorkoutResponseDTO updateWorkout(long workoutID, WorkoutRequestDTO workoutRequestDTO) {
-		Workout newWorkout = workoutMapper.DTOToEntity(workoutRequestDTO);
-		Workout oldWorkout = workoutRepository.getById(workoutID);
-		
-		if(oldWorkout.isDeleted()) {
-			//throw error if deleted
-		}
-		
-		oldWorkout.setExercises(newWorkout.getExercises());
-		oldWorkout.setMuscle(newWorkout.getMuscle());
-		oldWorkout.setName(newWorkout.getName());
-		oldWorkout.setTime_minutes(newWorkout.getTime_minutes());
-		
-		workoutRepository.saveAndFlush(oldWorkout);
-		return workoutMapper.EntityToDTO(oldWorkout);
+		Long profileID = workoutRepository.getById(workoutID).getId();
+		deleteWorkout(workoutID);
+		return createWorkout(profileID, workoutRequestDTO);
 	}
 
 	@Override
 	public WorkoutResponseDTO deleteWorkout(long workoutID) {
 		Workout workoutToDelete = workoutRepository.getById(workoutID);
-		workoutToDelete.setDeleted(true);
-		workoutRepository.saveAndFlush(workoutToDelete);
+		List<Exercise> exercisesToDelete = workoutToDelete.getExercises();
+		for(Exercise e : exercisesToDelete) {
+			All_Exercise tmp = all_exerciseRepository.findByName(e.getExercise().getName());
+			List<Exercise> tmpExercises = tmp.getExercises();
+			tmpExercises.remove(e);
+			tmp.setExercises(tmpExercises);
+			all_exerciseRepository.saveAndFlush(tmp);
+			
+			e.setWorkout(null);
+			e.setExercise(null);
+			
+			exerciseRepository.deleteById(e.getId());
+		}
+		
+		workoutRepository.deleteById(workoutID);
 		return workoutMapper.EntityToDTO(workoutToDelete);
 	}
 

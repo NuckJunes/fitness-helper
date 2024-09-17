@@ -18,7 +18,7 @@ public class Profile {
 
 	@Id
 	@GeneratedValue
-	private long id;
+	private Long id;
 	
 	@Column(unique = true, nullable = false)
 	private String username;
@@ -31,12 +31,12 @@ public class Profile {
 	
 	private boolean deleted = false;
 	
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "user")
 	private List<Pantry> pantry_items;
 	
-	@OneToMany(mappedBy = "profile", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "profile")
 	private List<Recipe> recipes;
 	
-	@OneToMany(mappedBy = "profile", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "profile")
 	private List<Workout> workouts;
 }

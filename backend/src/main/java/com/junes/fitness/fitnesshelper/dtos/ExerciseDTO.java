@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ExerciseDTO {
+	
+	private long id;
 
 	private double weight;
 	
