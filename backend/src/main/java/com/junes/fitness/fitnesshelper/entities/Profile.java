@@ -31,7 +31,7 @@ public class Profile {
 	
 	private boolean deleted = false;
 	
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "profile")
 	private List<Pantry> pantry_items;
 	
 	@OneToMany(mappedBy = "profile")

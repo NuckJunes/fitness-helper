@@ -13,5 +13,5 @@ public class PantryRequestDTO {
 	
 	private String measurement;
 	
-	private All_Food_DTO All_Food;
+	private All_Food_DTO food_item;
 }

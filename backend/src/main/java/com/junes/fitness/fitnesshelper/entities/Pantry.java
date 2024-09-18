@@ -33,7 +33,7 @@ public class Pantry {
 	
 	@ManyToOne
 	@JoinColumn(name = "profile_id")
-	private Profile user;
+	private Profile profile;
 	
 	private boolean deleted = false;
 }

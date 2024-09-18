@@ -7,7 +7,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.junes.fitness.fitnesshelper.entities.All_Exercise;
+import com.junes.fitness.fitnesshelper.entities.All_Food;
 import com.junes.fitness.fitnesshelper.entities.Exercise;
+import com.junes.fitness.fitnesshelper.entities.Pantry;
 import com.junes.fitness.fitnesshelper.entities.Profile;
 import com.junes.fitness.fitnesshelper.entities.Workout;
 import com.junes.fitness.fitnesshelper.repositories.All_ExerciseRepository;
@@ -108,6 +110,28 @@ public class Seeder implements CommandLineRunner {
 		workout1_exercises.add(exercise2);
 		workout1.setExercises(workout1_exercises);
 		workoutRepository.saveAndFlush(workout1);
+		
+		//Add all food items
+		All_Food food1 = new All_Food();
+		food1.setName("Flour");
+		food1.setDescription("Used for baking");
+		List<Pantry> pantryItems1 = new ArrayList<>();
+		//food1.setPantry_items(null);
+		//food1.setIngredients(null);
+		
+		//Pantry items for profile1
+		Pantry item1 = new Pantry();
+		item1.setName("My Flour");
+		item1.setAmount(16);
+		item1.setMeasurement("Ounces");
+		item1.setProfile(profile1);
+		item1.setFood_item(food1);
+		pantryItems1.add(item1);
+		
+		all_FoodRepository.saveAndFlush(food1);
+		pantryRepository.saveAndFlush(item1);
+		food1.setPantry_items(pantryItems1);
+		all_FoodRepository.saveAndFlush(food1);
 		
 		List<Workout> workouts = new ArrayList<>();
 		workouts.add(workout1);
