@@ -57,4 +57,26 @@ public class PantryServiceImpl implements PantryService{
 		return pantryMapper.EntityToDTO(pantryToAdd);
 	}
 
+	@Override
+	public PantryResponseDTO editPantryItem(long pantryID, PantryRequestDTO pantryRequestDTO) {
+		
+		//Check if pantry item exists
+		
+		Pantry newPantryDetails = pantryMapper.DTOToEntity(pantryRequestDTO);
+		Pantry oldPantryDetails = pantryRepository.getById(pantryID);
+		oldPantryDetails.setAmount(newPantryDetails.getAmount());
+		oldPantryDetails.setMeasurement(newPantryDetails.getMeasurement());
+		return pantryMapper.EntityToDTO(pantryRepository.saveAndFlush(oldPantryDetails));
+	}
+
+	@Override
+	public PantryResponseDTO deletePantryItem(long pantryID) {
+		
+		//Check if pantry item exists
+		
+		Pantry pantryDeleted = pantryRepository.getById(pantryID);
+		pantryRepository.deleteById(pantryID);
+		return pantryMapper.EntityToDTO(pantryDeleted);
+	}
+
 }

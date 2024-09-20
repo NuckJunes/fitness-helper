@@ -11,4 +11,8 @@ public interface PantryService {
 
 	PantryResponseDTO addPantryItem(long profileID, PantryRequestDTO pantryRequestDTO);
 
+	PantryResponseDTO editPantryItem(long pantryID, PantryRequestDTO pantryRequestDTO);
+
+	PantryResponseDTO deletePantryItem(long pantryID);
+
 }
