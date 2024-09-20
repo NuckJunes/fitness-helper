@@ -9,4 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 @Repository
 public interface All_FoodRepository extends JpaRepository<All_Food, Long> {
 
+	All_Food findByName(String name);
+
 }

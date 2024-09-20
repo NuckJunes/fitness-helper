@@ -26,6 +26,9 @@ public class All_Food {
 	@Column
 	private String description;
 	
+	@Column
+	private String type;
+	
 	private boolean deleted = false;
 	
 	@OneToMany(mappedBy = "food_item", cascade = CascadeType.ALL)

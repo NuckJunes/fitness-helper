@@ -14,4 +14,6 @@ public class All_Exercise_DTO {
 	private String muscle;
 	
 	private String description;
+	
+	private String type;
 }

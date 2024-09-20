@@ -127,7 +127,7 @@ public class Seeder implements CommandLineRunner {
 		item1.setProfile(profile1);
 		item1.setFood_item(food1);
 		pantryItems1.add(item1);
-		
+
 		all_FoodRepository.saveAndFlush(food1);
 		pantryRepository.saveAndFlush(item1);
 		food1.setPantry_items(pantryItems1);
