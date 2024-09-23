@@ -11,6 +11,7 @@ import com.junes.fitness.fitnesshelper.entities.All_Food;
 import com.junes.fitness.fitnesshelper.entities.Exercise;
 import com.junes.fitness.fitnesshelper.entities.Pantry;
 import com.junes.fitness.fitnesshelper.entities.Profile;
+import com.junes.fitness.fitnesshelper.entities.Recipe;
 import com.junes.fitness.fitnesshelper.entities.Workout;
 import com.junes.fitness.fitnesshelper.repositories.All_ExerciseRepository;
 import com.junes.fitness.fitnesshelper.repositories.All_FoodRepository;
@@ -111,6 +112,17 @@ public class Seeder implements CommandLineRunner {
 		workout1.setExercises(workout1_exercises);
 		workoutRepository.saveAndFlush(workout1);
 		
+		//Add recipes
+		Recipe recipe1 = new Recipe();
+		recipe1.setName("Bread");
+		recipe1.setCourse("Dinner");
+		List<String> instructions1 = new ArrayList<>();
+		instructions1.add("Get items");
+		instructions1.add("Make Bread");
+		recipe1.setInstructions(instructions1);
+		recipe1.setIngredients(null);
+		recipe1.setProfile(profile1);
+		
 		//Add all food items
 		All_Food food1 = new All_Food();
 		food1.setName("Flour");
@@ -137,6 +149,7 @@ public class Seeder implements CommandLineRunner {
 		workouts.add(workout1);
 		profile1.setWorkouts(workouts);
 		profileRepository.saveAndFlush(profile1);
+		recipeRepository.saveAndFlush(recipe1);
 		
 	}
 }

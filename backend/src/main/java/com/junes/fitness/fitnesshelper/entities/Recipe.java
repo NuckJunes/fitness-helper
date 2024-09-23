@@ -29,7 +29,7 @@ public class Recipe {
 	private String course;
 	
 	@Column 
-	private String[] instructions;
+	private List<String> instructions;
 	
 	private boolean deleted = false;
 	

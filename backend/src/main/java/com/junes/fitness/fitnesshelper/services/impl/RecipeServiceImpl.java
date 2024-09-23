@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.junes.fitness.fitnesshelper.dtos.RecipeRequestDTO;
 import com.junes.fitness.fitnesshelper.dtos.RecipeResponseDTO;
 import com.junes.fitness.fitnesshelper.mappers.RecipeMapper;
 import com.junes.fitness.fitnesshelper.repositories.RecipeRepository;
@@ -21,6 +22,12 @@ public class RecipeServiceImpl implements RecipeService {
 	@Override
 	public List<RecipeResponseDTO> GetAllRecipes(long profileID) {
 		return recipeMapper.EntitiesToDTOs(recipeRepository.findAllByProfileId(profileID));
+	}
+
+	@Override
+	public RecipeResponseDTO CreateNewRecipe(long profileID, RecipeRequestDTO recipeRequestDTO) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
