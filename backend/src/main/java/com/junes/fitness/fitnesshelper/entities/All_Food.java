@@ -31,9 +31,9 @@ public class All_Food {
 	
 	private boolean deleted = false;
 	
-	@OneToMany(mappedBy = "food_item", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "food_item")
 	private List<Pantry> pantry_items;
 	
-	@OneToMany(mappedBy = "food_item", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "All_Food")
 	private List<Ingredient> ingredients;
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import com.junes.fitness.fitnesshelper.entities.All_Exercise;
 import com.junes.fitness.fitnesshelper.entities.All_Food;
 import com.junes.fitness.fitnesshelper.entities.Exercise;
+import com.junes.fitness.fitnesshelper.entities.Ingredient;
 import com.junes.fitness.fitnesshelper.entities.Pantry;
 import com.junes.fitness.fitnesshelper.entities.Profile;
 import com.junes.fitness.fitnesshelper.entities.Recipe;
@@ -82,7 +83,6 @@ public class Seeder implements CommandLineRunner {
 		exercise1.setReps(5);
 		exercise1.setExercise(all_exercise_1);
 		exercise1.setWorkout(workout1);
-		
 		exerciseRepository.saveAndFlush(exercise1);
 		
 		List<Exercise> exercises = new ArrayList<>();
@@ -96,7 +96,6 @@ public class Seeder implements CommandLineRunner {
 		exercise2.setReps(8);
 		exercise2.setExercise(all_exercise_2);
 		exercise2.setWorkout(workout1);
-		
 		exerciseRepository.saveAndFlush(exercise2);
 		
 		List<Exercise> exercises2 = new ArrayList<>();
@@ -112,24 +111,40 @@ public class Seeder implements CommandLineRunner {
 		workout1.setExercises(workout1_exercises);
 		workoutRepository.saveAndFlush(workout1);
 		
+		//set up ingredients
+		Ingredient flour = new Ingredient();
+		flour.setAmount(3.0);
+		flour.setMeasurement("tbsp");
+		ingredientRepository.saveAndFlush(flour);
+		
 		//Add recipes
 		Recipe recipe1 = new Recipe();
 		recipe1.setName("Bread");
 		recipe1.setCourse("Dinner");
+		
 		List<String> instructions1 = new ArrayList<>();
 		instructions1.add("Get items");
 		instructions1.add("Make Bread");
 		recipe1.setInstructions(instructions1);
-		recipe1.setIngredients(null);
+		
+		List<Ingredient> ingredients1 = new ArrayList<>();
+		//ingredients1.add(flour);
+		recipe1.setIngredients(ingredients1);
+		
 		recipe1.setProfile(profile1);
+		flour.setRecipe(recipe1);
 		
 		//Add all food items
 		All_Food food1 = new All_Food();
 		food1.setName("Flour");
 		food1.setDescription("Used for baking");
 		List<Pantry> pantryItems1 = new ArrayList<>();
-		//food1.setPantry_items(null);
-		//food1.setIngredients(null);
+		
+		List<Ingredient> ingredients2 = new ArrayList<>();
+		//ingredients2.add(flour);
+		food1.setIngredients(ingredients2);
+		flour.setAll_Food(food1);
+
 		
 		//Pantry items for profile1
 		Pantry item1 = new Pantry();
@@ -150,6 +165,7 @@ public class Seeder implements CommandLineRunner {
 		profile1.setWorkouts(workouts);
 		profileRepository.saveAndFlush(profile1);
 		recipeRepository.saveAndFlush(recipe1);
+		ingredientRepository.saveAndFlush(flour);
 		
 	}
 }

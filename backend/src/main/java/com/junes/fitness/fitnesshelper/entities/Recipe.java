@@ -33,7 +33,7 @@ public class Recipe {
 	
 	private boolean deleted = false;
 	
-	@OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "recipe")
 	private List<Ingredient> ingredients;
 	
 	@ManyToOne

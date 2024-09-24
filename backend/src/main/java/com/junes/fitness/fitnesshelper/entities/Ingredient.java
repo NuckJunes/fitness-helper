@@ -32,5 +32,5 @@ public class Ingredient {
 	
 	@ManyToOne
 	@JoinColumn(name = "Food_ID")
-	private All_Food food_item;
+	private All_Food All_Food;
 }
