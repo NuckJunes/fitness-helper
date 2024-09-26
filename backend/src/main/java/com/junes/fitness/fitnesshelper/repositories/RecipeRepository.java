@@ -11,5 +11,5 @@ import com.junes.fitness.fitnesshelper.entities.Recipe;
 public interface RecipeRepository extends JpaRepository<Recipe, Long>{
 
 	List<Recipe> findAllByProfileId(long profileID);
-
+	
 }

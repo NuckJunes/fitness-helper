@@ -11,4 +11,8 @@ public interface RecipeService {
 
 	RecipeResponseDTO CreateNewRecipe(long profileID, RecipeRequestDTO recipeRequestDTO);
 
+	RecipeResponseDTO UpdateRecipe(long recipeID, RecipeRequestDTO recipeRequestDTO);
+
+	RecipeResponseDTO DeleteRecipe(long recipeID);
+
 }

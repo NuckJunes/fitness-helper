@@ -2,7 +2,9 @@ package com.junes.fitness.fitnesshelper.controllers;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,5 +32,15 @@ public class RecipeController {
 	@PostMapping("/{profileID}")
 	public RecipeResponseDTO CreateNewRecipe(@PathVariable long profileID, @RequestBody RecipeRequestDTO recipeRequestDTO) {
 		return recipeService.CreateNewRecipe(profileID, recipeRequestDTO);
+	}
+	
+	@PatchMapping("{recipeID}")
+	public RecipeResponseDTO UpdateRecipe(@PathVariable long recipeID, @RequestBody RecipeRequestDTO recipeRequestDTO) {
+		return recipeService.UpdateRecipe(recipeID, recipeRequestDTO);
+	}
+	
+	@DeleteMapping("{recipeID}")
+	public RecipeResponseDTO DeleteRecipe(@PathVariable long recipeID) {
+		return recipeService.DeleteRecipe(recipeID);
 	}
 }

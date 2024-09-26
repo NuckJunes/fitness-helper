@@ -50,4 +50,41 @@ public class RecipeServiceImpl implements RecipeService {
 		ingredientRepository.saveAllAndFlush(recipeToCreate.getIngredients());
 		return recipeMapper.EntityToDTO(recipeToCreate);
 	}
+
+	@Override
+	public RecipeResponseDTO UpdateRecipe(long recipeID, RecipeRequestDTO recipeRequestDTO) {
+		Recipe oldRecipe = recipeRepository.getById(recipeID);
+		Recipe newRecipe = recipeMapper.DTOToEntity(recipeRequestDTO);
+		
+		//add new ingredients in
+		for(Ingredient i : newRecipe.getIngredients()) {
+			i.setRecipe(oldRecipe);
+			i.setAll_Food(all_FoodRepository.findByName(i.getAll_Food().getName()));
+		}
+		
+		//remove old ingredients
+		for(Ingredient i : oldRecipe.getIngredients()) {
+			i.setRecipe(null);
+		}
+		oldRecipe.setIngredients(newRecipe.getIngredients());
+		oldRecipe.setCourse(newRecipe.getCourse());
+		oldRecipe.setName(newRecipe.getName());
+		oldRecipe.setInstructions(newRecipe.getInstructions());
+		
+		ingredientRepository.deleteByRecipeIsNull();
+		ingredientRepository.saveAllAndFlush(newRecipe.getIngredients());
+		
+		return recipeMapper.EntityToDTO(recipeRepository.saveAndFlush(oldRecipe));
+	}
+
+	@Override
+	public RecipeResponseDTO DeleteRecipe(long recipeID) {
+		Recipe recipeToDelete = recipeRepository.getById(recipeID);
+		for(Ingredient i : recipeToDelete.getIngredients()) {
+			i.setRecipe(null);
+		}
+		ingredientRepository.deleteByRecipeIsNull();
+		recipeRepository.deleteById(recipeID);
+		return recipeMapper.EntityToDTO(recipeToDelete);
+	}
 }
