@@ -1,0 +1,35 @@
+.row {
+    display: flex;
+    margin: auto;
+    width: 90%;
+}
+
+.column {
+    order: 1;
+    flex-grow: 1;
+    text-align: center;
+    width: 90%;
+    background-color: steelblue;
+    margin-right: 5px;
+    margin-left: 5px;
+    border-radius: 10px;
+}
+
+.section {
+    margin: auto;
+    width: 90%;
+    padding-bottom: 25px;
+    background-color: lightblue;
+    border-radius: 10px;
+}
+
+h2 {
+    text-align: center;
+    padding-top: 25px;
+}
+
+.main-header {
+    text-align: center;
+    margin: 100px;
+}
+
