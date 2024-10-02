@@ -1,0 +1,29 @@
+.dropdown-content {
+    display: none;
+    position: absolute;
+}
+
+.dropdown-content:hover {
+    background-color: lightblue;
+}
+
+.dropdown:hover .dropbtn{
+    background-color: lightblue;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.navbar {
+    background-color: white;
+    display: flex;
+}
+
+.dropbtn {
+    border: none;
+    outline: none;
+    background-color: white;
+    color: black;
+    margin: 0;
+}
