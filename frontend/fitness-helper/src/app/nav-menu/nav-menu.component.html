@@ -1,8 +1,13 @@
 <nav class="navbar">
+    <div class="home">
+        <a routerLink="/">Home</a>
+    </div>
     <div class="dropdown">
         <button class="dropbtn">Exercise</button>
         <div class="dropdown-content">
-            <a routerLink="/Workouts">Workouts</a>
+            <a routerLink="/workout">Workouts</a>
+            <a routerLink="/exercise">Exercises</a>
+            <a routerLink="/exercise-tips">Tips and Tricks</a>
         </div>
     </div>
     <div class="dropdown">
@@ -10,5 +15,8 @@
         <div class="dropdown-content">
             <a routerLink="/Pantry">Pantry</a>
         </div>
+    </div>
+    <div class="login">
+        <a routerLink="/login">Login</a>
     </div>
 </nav>

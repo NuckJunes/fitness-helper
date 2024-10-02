@@ -3,7 +3,13 @@
     position: absolute;
 }
 
-.dropdown-content:hover {
+.dropdown-content a {
+    display: block;
+    text-decoration: none;
+    color: black;
+}
+
+.dropdown-content a:hover {
     background-color: lightblue;
 }
 
