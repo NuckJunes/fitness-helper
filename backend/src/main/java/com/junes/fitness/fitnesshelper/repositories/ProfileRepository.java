@@ -8,4 +8,8 @@ import com.junes.fitness.fitnesshelper.entities.Profile;
 @Repository
 public interface ProfileRepository extends JpaRepository<Profile, Long> {
 
+	Profile findByUsername(String username);
+
+	Profile findByPassword(String password);
+
 }
