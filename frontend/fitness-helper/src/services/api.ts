@@ -31,17 +31,29 @@ const checkStatus = (response: any) => {
  * @param {object} optionsBody: A object containing any values that go into the request body
  */
 export const CRUD = (operation: string, endpoint: String, options: String[], optionsBody: any) => {
-    let URL = ROOT + endpoint;
+    let URL = ROOT + "/" + endpoint;
     options.forEach((element) => {
         URL = URL + '/' + element;
     });
-    return fetch(URL, {
-        method: operation,
-        body: JSON.stringify(optionsBody),
-        headers: {
-            'Content-Type': 'application/json'
-        },
-    })
-    .then(checkStatus)
-    .then(parseJSON);
+
+    if(operation === "GET") {
+        return fetch(URL, {
+            method: operation,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(checkStatus)
+        .then(parseJSON);
+    }
+    else {
+        return fetch(URL, {
+            method: operation,
+            body: JSON.stringify(optionsBody),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then(checkStatus)
+        .then(parseJSON);
+    }
 };
