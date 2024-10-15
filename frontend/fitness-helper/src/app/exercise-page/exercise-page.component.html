@@ -1,1 +1,12 @@
-<p>exercise-page works!</p>
+<app-nav-menu></app-nav-menu>
+<div>
+    <h1>Exercises</h1>
+    <p>Description about exercises page.</p>
+</div>
+<div>
+    <ul>
+        <li *ngFor="let exercise of exercises">
+            {{exercise.name}} {{exercise.muscle}}  {{exercise.description}}
+        </li>
+    </ul>
+</div>
