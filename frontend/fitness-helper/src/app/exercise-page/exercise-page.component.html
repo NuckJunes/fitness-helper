@@ -1,12 +1,15 @@
 <app-nav-menu></app-nav-menu>
-<div>
-    <h1>Exercises</h1>
+<div class="main-header">
+    <h2>Exercises</h2>
     <p>Description about exercises page.</p>
 </div>
-<div>
+<div class="exercise-section">
     <ul>
-        <li *ngFor="let exercise of exercises">
-            {{exercise.name}} {{exercise.muscle}}  {{exercise.description}}
+        <li>
+            <p>Exercise Name | Exercise Muscle | Exercise Description</p>
+        </li>
+        <li *ngFor="let exercise of exercises" class="exercise">
+            <p>{{exercise.name}} | {{exercise.muscle}} | {{exercise.description}}</p>
         </li>
     </ul>
 </div>

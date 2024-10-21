@@ -1,0 +1,26 @@
+h2 {
+    text-align: center;
+    padding-top: 25px;
+}
+
+.main-header {
+    text-align: center;
+    margin: 100px;
+}
+
+.exercise-section {
+    background-color: lightblue;
+    margin: 50px;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.exercise {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+ul {
+    list-style-type: none;
+}
