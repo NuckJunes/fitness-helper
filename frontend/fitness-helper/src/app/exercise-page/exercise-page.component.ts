@@ -3,11 +3,12 @@ import All_Exercise_DTO from '../models/All_Exercise_DTO';
 import { CRUD } from '../../services/api';
 import { NavMenuComponent } from "../nav-menu/nav-menu.component";
 import { CommonModule } from '@angular/common';
+import {MatInputModule} from '@angular/material/input';
 
 @Component({
   selector: 'app-exercise-page',
   standalone: true,
-  imports: [NavMenuComponent, CommonModule],
+  imports: [NavMenuComponent, CommonModule, MatInputModule],
   templateUrl: './exercise-page.component.html',
   styleUrl: './exercise-page.component.css'
 })
@@ -15,6 +16,8 @@ import { CommonModule } from '@angular/common';
 export class ExercisePageComponent {
 
   exercises: All_Exercise_DTO[] = [];
+  exercises_searched: All_Exercise_DTO[] = [];
+  name: String = "";
 
   ngOnInit() {
     //this.getExercises(); THIS WORKS
@@ -25,6 +28,7 @@ export class ExercisePageComponent {
       description: "Curl arms up!"
     };
     this.exercises.push(exercise);
+    this.exercises_searched = this.exercises;
   }
 
   async getExercises() {
@@ -35,5 +39,14 @@ export class ExercisePageComponent {
     } catch(error) {
       console.error("Error getting all exercises:", error);
     }
+  }
+
+  doSomething(event: string) {
+    this.exercises_searched = [];
+    this.exercises.forEach(element => {
+      if(element.name.includes(event)) {
+        this.exercises_searched.push(element);
+      }
+    });
   }
 }
