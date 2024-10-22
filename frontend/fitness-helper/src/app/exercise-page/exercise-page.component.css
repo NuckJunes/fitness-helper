@@ -16,9 +16,32 @@ h2 {
 }
 
 .exercise {
+    display: flex;
     background-color: white;
     padding: 20px;
     border-radius: 5px;
+    font-size: 20px;
+}
+
+.exercise-header {
+    display: flex;
+    font-size: 20px;
+    padding-left: 20px;
+}
+
+.exercise-name {
+    order: 1;
+    width: 20%;
+}
+
+.exercise-muscle {
+    order: 2;
+    width: 20%;
+}
+
+.exercise-description {
+    order: 3;
+    width: 60%;
 }
 
 ul {

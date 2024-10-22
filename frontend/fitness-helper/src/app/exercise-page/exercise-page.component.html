@@ -5,11 +5,15 @@
 </div>
 <div class="exercise-section">
     <ul>
-        <li>
-            <p>Exercise Name | Exercise Muscle | Exercise Description</p>
+        <li class="exercise-header">
+            <h5 class="exercise-name">Exercise Name</h5>
+            <h5 class="exercise-muscle">Exercise Muscle</h5>
+            <h5 class="exercise-description">Exercise Description</h5>
         </li>
         <li *ngFor="let exercise of exercises" class="exercise">
-            <p>{{exercise.name}} | {{exercise.muscle}} | {{exercise.description}}</p>
+            <h5 class="exercise-name">{{exercise.name}}</h5>
+            <h5 class="exercise-muscle">{{exercise.muscle}}</h5>
+            <h5 class="exercise-description">{{exercise.description}}</h5>
         </li>
     </ul>
 </div>
