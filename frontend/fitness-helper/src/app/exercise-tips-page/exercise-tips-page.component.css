@@ -1,0 +1,28 @@
+
+.row {
+    display: wrap;
+    margin: auto;
+    width: 90%;
+    padding-bottom: 25px;
+    background-color: lightblue;
+    border-radius: 10px;
+}
+
+h3 {
+    order: 1;
+    text-align: center;
+    padding-top: 5px;
+    width: 100%;
+}
+
+p {
+    order: 2;
+    text-align: left;
+    padding: 10px;
+    width: 100%;
+}
+
+.main-header {
+    text-align: center;
+    margin: 100px;
+}
