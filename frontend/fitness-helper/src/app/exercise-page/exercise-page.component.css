@@ -8,6 +8,11 @@ h2 {
     margin: 100px;
 }
 
+mat-menu {
+    position: absolute;
+}
+
+
 .exercise-section {
     background-color: lightblue;
     margin: 50px;

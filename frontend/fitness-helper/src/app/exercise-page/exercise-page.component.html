@@ -4,7 +4,12 @@
     <p>Description about exercises page.</p>
 </div>
 <div class="exercise-section">
-    <input matInput placeholder="Enter Exercise Name" #value (keydown.enter)="doSomething(value.value)">
+    <input matInput placeholder="Enter Exercise Name" #value (keydown.enter)="searchPrompt(value.value)">
+    <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+    <mat-menu #menu="matMenu">
+        <button class="menu-item" mat-menu-item (click)="changeSort('Bicep')">Bicep</button>
+        <button class="menu-item" mat-menu-item (click)="changeSort('Chest')">Chest</button>
+    </mat-menu>
     <ul>
         <li class="exercise-header">
             <h5 class="exercise-name">Exercise Name</h5>
