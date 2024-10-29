@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavMenuComponent } from '../nav-menu/nav-menu.component';
+import WorkoutResponseDTO from '../models/WorkoutResponseDTO';
 
 @Component({
   selector: 'app-workout-page',
@@ -10,4 +11,13 @@ import { NavMenuComponent } from '../nav-menu/nav-menu.component';
 })
 export class WorkoutPageComponent {
 
+  workouts: WorkoutResponseDTO[] = [];
+  workouts_searched: WorkoutResponseDTO[] = [];
+  search_name: string = "";
+  muscle_name: string = "";
+
+  ngOnInit() {
+    // Use API to get all workouts with profileID
+    
+  }
 }
