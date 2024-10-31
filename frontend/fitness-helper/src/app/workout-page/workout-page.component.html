@@ -6,4 +6,21 @@
 <div>
     <!-- Needs a sort, search, add -->
     <!-- Workout components -->
+     <ul>
+        <li class="workout-header">
+            <h5>Workout Name</h5>
+            <h5>Workout Muscle</h5>
+            <h5>Exercises List</h5>
+        </li>
+        <li *ngFor="let workout of workouts_searched" class="workout-items">
+            <h5>{{ workout.name }}</h5>
+            <h5>{{ workout.muscle }}</h5>
+            <ul>
+                <li *ngFor="let exercise of workout.exercises">
+                    {{ exercise.exercise.name }}
+                </li>
+            </ul>
+            <!-- Edit button and drop down button -->
+        </li>
+     </ul>
 </div>
